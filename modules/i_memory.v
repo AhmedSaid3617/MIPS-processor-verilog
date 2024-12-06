@@ -1,10 +1,10 @@
 module i_memory (output reg [31:0] instruction,
                  input wire[31:0] address,
                  input wire clk);
-reg [31:0] instruction_memory[4095:0];
+reg [31:0] instruction_memory[0:1023];
 
 always @(posedge clk) begin
-    instruction <= instruction_memory[address];
+    instruction <= instruction_memory[address>>2];
 end
 
 initial begin
