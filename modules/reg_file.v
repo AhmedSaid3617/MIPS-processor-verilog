@@ -11,12 +11,21 @@ module reg_file (read_data_1, read_data_2, clk, read_reg_1, read_reg_2, write_en
     end
 
     always @(posedge clk) begin
-        if (write_data) begin
+        if (write_en) begin
             registers[write_reg] <= write_data;
         end
+    end
 
+    always @(*) begin
         read_data_1 <= registers[read_reg_1];
         read_data_2 <= registers[read_reg_2];
+    end
+
+    integer i;
+    initial begin
+        for (i = 0; i < 32; i=i+1) begin
+            registers[i] = 0;
+        end
     end
 
 endmodule

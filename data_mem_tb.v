@@ -34,7 +34,7 @@ module top ();
         address = 'h1c;
         mem_read = 1;
     end
-    
+
     initial begin
         $monitor("Time %d: Address: %x \tInstruction: %x", $time, address, read_data); 
     end
